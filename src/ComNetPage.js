@@ -14,9 +14,9 @@ const ComNetPage = () => {
   return (
     <div>
       <h2>Computer Network Management</h2>
-      <div><Link to="/userAppPage">User App Page</Link></div>
-      <div><Link to="/allAppPage">All App Page</Link></div>
-      <div><Link to="/comNetPage"><b>Computer Network Management Page</b></Link></div>
+      <div><Link to="/userAppPage">User App</Link></div>
+      <div><Link to="/allAppPage">All App</Link></div>
+      <div><Link to="/comNetPage"><b>Computer Network Management</b></Link></div>
     </div>
   );
 };

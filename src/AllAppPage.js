@@ -14,9 +14,9 @@ const AllAppPage = () => {
   return (
     <div>
       <h2>AllApp</h2>
-      <div><Link to="/userAppPage">Go to User App Page</Link></div>
-      <div><Link to="/allAppPage"><b>Go to All App Page</b>.</Link></div>
-      <div><Link to="/comNetPage">Go to Computer Network Management Page</Link></div>
+      <div><Link to="/userAppPage">User App</Link></div>
+      <div><Link to="/allAppPage"><b>All App</b>.</Link></div>
+      <div><Link to="/comNetPage">Computer Network Management</Link></div>
     </div>
   );
 };
