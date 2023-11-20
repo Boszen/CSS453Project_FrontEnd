@@ -1,0 +1,12 @@
+td,th {
+    padding: 10 px;
+    border: 1px solid #000000;
+    padding-left: 15px;
+}
+
+table {
+    width: 100%; /* Set the table width to 100% of its container */
+    border-collapse: collapse; /* Remove default table spacing */
+    
+}
+

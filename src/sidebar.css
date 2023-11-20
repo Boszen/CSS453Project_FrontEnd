@@ -1,0 +1,46 @@
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding-top: 20px;
+  }
+  
+  .sidebar h2 {
+    color: white;
+    text-align: center;
+  }
+
+  p {
+    text-align: left;
+    padding-left: 10px;
+    color: rgb(149, 128, 255);
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  nav {
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 8px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+  }
+
+  .active {
+    color: rgb(255, 90, 90); 
+  }
+  

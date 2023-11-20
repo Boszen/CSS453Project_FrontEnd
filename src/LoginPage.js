@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import './loginRegister.css'
 
 const api_base_url = process.env.REACT_APP_BACKEND_URL
 
@@ -16,7 +17,11 @@ const LoginPage = () => {
         password: password 
     })
     .then(response => {
-        console.log(response.data);
+        let {access_token , refresh_token} = response.data.data.token
+
+        localStorage.setItem('access_token', access_token);
+        localStorage.setItem('refresh_token', refresh_token);
+
         navigate('/userAppPage');
     })
     .catch(error => {
@@ -26,7 +31,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className='center'>
       <h2>Login</h2>
       <form>
         <div>
@@ -51,6 +56,7 @@ const LoginPage = () => {
           Login
         </button>
       </form>
+      <div><Link to="/registerPage"><b>Register</b></Link></div>
     </div>
   );
 };
