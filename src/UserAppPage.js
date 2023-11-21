@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+import axiosCentral from './axiosHandler';
 import { decodeToken } from './TokenHandler';
 import './userApp.css'
 
@@ -13,6 +14,7 @@ const UserAppPage = () => {
   const [selectedUserId, setSelectedUserId] = useState('');
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [popupFix, setPopupFix] = useState(null);
 
   useEffect(() => {
     const fetchUserOptions = async () => {
@@ -23,9 +25,8 @@ const UserAppPage = () => {
         const decodedToken = await decodeToken(access_token);
         setUserId(decodedToken.user_id);
 
-        const response = await axios.get(`${api_base_url}/api/user/getSub`, {
+        const response = await axiosCentral.get(`${api_base_url}/api/user/getSub`, {
           headers: {
-            'Authorization': access_token,
             'ngrok-skip-browser-warning': 'asd'
           }
         });
@@ -44,9 +45,8 @@ const UserAppPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await axios.get(`${api_base_url}/api/user/checkPatch/${selectedUserId}`, {
+        await axiosCentral.get(`${api_base_url}/api/user/checkPatch/${selectedUserId}`, {
           headers: {
-            'Authorization': access_token,
             'ngrok-skip-browser-warning': 'asd'
           }
         }).then(response => {
@@ -71,6 +71,10 @@ const UserAppPage = () => {
 
   const handleUserChange = (event) => {
     setSelectedUserId(event.target.value);
+  };
+
+  const handleLinkClick = (fix) => {
+    setPopupFix(fix);
   };
 
   return (
@@ -102,12 +106,38 @@ const UserAppPage = () => {
           <tbody>
             {items.map((item, index) => (
               <tr key={index + 1}>
-                <td>{item.DisplayName}</td>
+                {item.fix ? (
+                  <td>
+                    <NavLink to="#" onClick={() => handleLinkClick(item.fix)}>
+                    {item.DisplayName}
+                    </NavLink>
+                </td>
+                ) : (
+                  <td>{item.DisplayName}</td>
+                )}
                 <td>{item.DisplayVersion}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      )}
+      {popupFix && (
+        <div className='overlay'>
+          <div className="popup">
+            <h3>Fix Information</h3>
+            {popupFix.map(fix => (
+              <div>
+                <h4>Version - {fix.version}</h4>
+                {fix.fix.map(issue => (
+                  <div>
+                    Issue No.{issue.issueID} - {issue.description}
+                  </div>
+                ))}
+              </div>
+            ))}
+            <button style={{position:'absolute',bottom:'15px',right:'20px'}} onClick={() => setPopupFix(null)}>Close</button>
+          </div>
+        </div>
       )}
     </div>
   );

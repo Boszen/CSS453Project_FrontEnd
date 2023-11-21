@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { decodeToken } from './TokenHandler';
 import './sidebar.css';
 
@@ -29,12 +29,17 @@ const Sidebar = () => {
           </li>
           <li>
             <NavLink to="/allAppPage" activeclassname="active">
-              All App
+              All Supported App
             </NavLink>
           </li>
           <li>
             <NavLink to="/comNetPage" activeclassname="active">
               Computer Network Management
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/localAgent" activeclassname="active">
+              Donwload Local Agent
             </NavLink>
           </li>
         </ul>

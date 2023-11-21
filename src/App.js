@@ -5,7 +5,9 @@ import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import UserAppPage from './UserAppPage';
 import AllAppPage from './AllAppPage';
+import NoteAllAppPage from './NoteAllAppPage';
 import ComNetPage from './ComNetPage';
+import LocalAgentDownload from './LocalAgentDownload';
 
 const AppContent = () => {
   const location = useLocation();
@@ -21,7 +23,9 @@ const AppContent = () => {
           <Route path="/registerPage" element={<RegisterPage />} />
           <Route path="/userAppPage" element={<UserAppPage />} />
           <Route path="/allAppPage" element={<AllAppPage />} />
+          <Route path="/noteAllApp/:appId" element={<NoteAllAppPage />} />
           <Route path="/comNetPage" element={<ComNetPage />} />
+          <Route path="/localAgent" element={<LocalAgentDownload />} />
         </Routes>
       </div>
     </div>
