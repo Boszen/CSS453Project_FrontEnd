@@ -33,11 +33,11 @@ axiosCentral.interceptors.response.use(
           console.log(refreshResponse.data);
   
           const { access_token, refresh_token } = refreshResponse.data.data.token;
-  
-          axiosCentral.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-  
+
           localStorage.setItem('access_token', access_token);
           localStorage.setItem('refresh_token', refresh_token);
+  
+          axiosCentral.defaults.headers.common['Authorization'] = `${access_token}`;
   
           return axios(error.config);
         } catch (refreshError) {

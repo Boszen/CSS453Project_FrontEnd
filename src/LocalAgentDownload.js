@@ -23,7 +23,6 @@ const LocalAgentDownload = () => {
     try {
       const response = await axiosCentral.post(
         `${api_base_url}/api/user/localAgentDownload`,
-        {},
         {
           responseType: 'blob',
           headers: {

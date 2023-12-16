@@ -22,8 +22,8 @@ const ComNetPage = () => {
       refresh_token = localStorage.getItem('refresh_token');
       api_base_url = process.env.REACT_APP_BACKEND_URL;
 
-      const decodedToken = decodeToken(access_token);
-      setUserId(decodedToken.user_id);
+      const decoded = decodeToken(access_token);
+      setUserId(decoded.user_id);
 
       const response = await axiosCentral.get(`${api_base_url}/api/user/getSubWarning`, {
         headers: {

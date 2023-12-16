@@ -49,6 +49,8 @@ const NoteAllAppPage = () => {
           <div>Phone: {patch_note_json.vendorNotes.phone}</div>
           <h3>Latest Version</h3> 
           <div>{patch_note_json.currentVersion}</div>
+          <h3>Update Approach</h3> 
+          <div>{patch_note_json.updateApproach}</div>
           <h3>Patch Note</h3> 
           <table>
           <thead>
@@ -61,12 +63,12 @@ const NoteAllAppPage = () => {
           <tbody>
             {patch_note_json.patches.map(patch => (
               <tr key={patch.version}>
-                <td>{patch.version}</td>
-                <td>{patch.date}</td>
+                <td style={{width: '100px', textAlign: 'center'}}>{patch.version}</td>
+                <td style={{width: '100px', textAlign: 'center'}}>{patch.date}</td>
                 <td>
                   {
                     patch.fix.map(fix =>(
-                      <div>- {fix.description}</div>
+                      <div><h4> Issue ID.{fix.issueID} </h4>{fix.description}</div>
                     ))}
                 </td>
               </tr>

@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'r
 import Sidebar from './SideBar';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
+import RegisterPageSub from './RegisterPageSub';
 import UserAppPage from './UserAppPage';
+import UserAppPageSub from './UserAppPageSub';
 import AllAppPage from './AllAppPage';
 import NoteAllAppPage from './NoteAllAppPage';
 import ComNetPage from './ComNetPage';
@@ -14,18 +16,25 @@ const AppContent = () => {
 
   return (
     <div>
-      {!(location.pathname === '/loginPage' || location.pathname === '/registerPage') && <Sidebar />}
+      {!(location.pathname.startsWith('/loginPage') || location.pathname.startsWith('/registerPage')) && <Sidebar />}
+      <div className='center'>
+        <Routes>
+            <Route path="/" element={<Navigate to="/loginPage" />} />
+            <Route path="/loginPage" element={<LoginPage />} />
+            <Route path="/registerPage" element={<RegisterPage />} />
+            <Route path="/registerPage/:token_reg" element={<RegisterPageSub />} />
+        </Routes>
+      </div>
+      
       
       <div style={{ marginLeft: '200px', padding: '20px' }}>
         <Routes>
-          <Route path="/" element={<Navigate to="/loginPage" />} />
-          <Route path="/loginPage" element={<LoginPage />} />
-          <Route path="/registerPage" element={<RegisterPage />} />
           <Route path="/userAppPage" element={<UserAppPage />} />
+          <Route path="/userAppPageSub" element={<UserAppPageSub />} />
           <Route path="/allAppPage" element={<AllAppPage />} />
           <Route path="/noteAllApp/:appId" element={<NoteAllAppPage />} />
           <Route path="/comNetPage" element={<ComNetPage />} />
-          <Route path="/localAgent" element={<LocalAgentDownload />} />
+          <Route path="/localAgentPage" element={<LocalAgentDownload />} />
         </Routes>
       </div>
     </div>
